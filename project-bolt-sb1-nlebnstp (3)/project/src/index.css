@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.97) translateY(4px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+:root { font-family: 'DM Sans', system-ui, sans-serif; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::selection { background: #2e79c9; color: white; }
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+.glass { backdrop-filter: blur(18px); }
+
+/* === Owner animated name === */
+@keyframes ownerFluffy {
+  0%, 100% { text-shadow: 0 0 4px rgba(255,120,40,.8), 0 0 10px rgba(255,160,60,.5), 0 0 20px rgba(255,200,80,.3); transform: translateY(0) scale(1); }
+  25% { text-shadow: 0 0 6px rgba(255,80,20,.9), 0 0 14px rgba(255,140,50,.6), 0 0 28px rgba(255,180,70,.4); transform: translateY(-1px) scale(1.02); }
+  50% { text-shadow: 0 0 8px rgba(255,60,10,1), 0 0 18px rgba(255,120,40,.7), 0 0 36px rgba(255,160,60,.5); transform: translateY(0) scale(1); }
+  75% { text-shadow: 0 0 6px rgba(255,100,30,.9), 0 0 14px rgba(255,150,55,.6), 0 0 28px rgba(255,190,75,.4); transform: translateY(-1px) scale(1.02); }
+}
+@keyframes ownerHue {
+  0% { filter: hue-rotate(0deg) saturate(1.4); }
+  50% { filter: hue-rotate(-15deg) saturate(1.8); }
+  100% { filter: hue-rotate(0deg) saturate(1.4); }
+}
+@keyframes ownerWobble {
+  0%, 100% { letter-spacing: .005em; }
+  50% { letter-spacing: .018em; }
+}
+.owner-name {
+  background: linear-gradient(90deg, #ff6b1a, #ff9a3c, #ffc560, #ff9a3c, #ff6b1a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  animation: ownerFluffy 2.4s ease-in-out infinite, ownerHue 4s ease-in-out infinite, ownerWobble 2.4s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Dark mode (default) */
+.dark-mode { color-scheme: dark; }
+.dark-mode body, .dark-mode { background: #0b1220; color: #dbe5f3; }
+.dark-mode ::-webkit-scrollbar-thumb { background: #29374c; border-radius: 10px; }
+.dark-mode ::-webkit-scrollbar-thumb:hover { background: #40546f; }
+
+/* Light mode */
+.light-mode { color-scheme: light; }
+.light-mode body, .light-mode { background: #eef2f8; color: #1e2d43; }
+.light-mode ::-webkit-scrollbar-thumb { background: #c5d0de; border-radius: 10px; }
+.light-mode ::-webkit-scrollbar-thumb:hover { background: #a8b8cc; }
